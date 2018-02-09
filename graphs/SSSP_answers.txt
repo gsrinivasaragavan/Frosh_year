@@ -1,0 +1,6 @@
+1. We should investigate the neighbor with the shortest distance first.
+2. At each further step, you pick the node that will give the shortest distance from the source when added to our path already in existence, as long as we have not already visited that node.
+3. At each new node we investigate and then choose, we make the node we are looking at point to the node that we came from. 
+4. This is a greedy algorithm, so every node that we find the shortest path for will be the absolute shortest, and there cannot be an alternative shortest path, the next node will be the next shortest path, and so on. 
+5. When we have reached our destination, since this is a greedy algorithm and chooses the shortest path every time, so we do not need to look at all the rest of the paths. 
+6. We can derive the path we want by looking at the nodes and which nodes they point to, and recontstruct the path. 
