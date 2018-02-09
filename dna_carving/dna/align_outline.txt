@@ -1,0 +1,27 @@
+Scoring outline
+align(string s, string t, string memo)
+	first check if s + t is in the memo (provided code does this already)
+	Create the base case:
+	if(s == "") - have reached end of recursion
+		return align_result(gapscore * length of t, "t" * length of t)
+	else if (t == "") -end of recursion as well, but t became empty first
+		return align_result(gapscore * length of s, "s" * length of s)
+	Show the three different recursive cases:
+	align_result case 1: gap_S = align(s.substring(1), t, memo) - taking off first character of string every time, then checking the rest of it
+	align_result case 2: gap_T = align(t.substring(1), s, memo)
+	align_result case 3: no_gap = align(s.substring(1), t.substring(1), memo)
+	Every time we run recursion, have to update the strings and the scores:
+	gap_S.score += gapScore
+	gap_T.score += gapScore
+	gap_S.string = "s" + gap_S.string
+	gap_T.string = "t" + gap_T.string
+	Third case for no_gap has two different possibilities:
+	if(s[0] = t[0]):
+		no_gap.string = "|" + no_gap.string
+		r3.score += matchscore
+	else:
+		no_gap.string = "*" + no_gap.string
+		no_gap.score += mismatchscore
+	no_gap.score += gapscore
+	Finally, must compare the three different scores
+		add the align_result object with the highest score to our memo and return this object
